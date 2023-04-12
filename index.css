@@ -1,0 +1,64 @@
+
+body {
+  background-color: #dedede;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  padding-bottom: 0;
+  font-family: Arial;
+}
+
+.controls select {
+  min-width: 156px;
+}
+
+.controls .button {
+  cursor: pointer;
+}
+
+.controls .divider {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.content > * {
+  min-height: 240px;
+  flex: 1;
+}
+
+code {
+  outline: none;
+  white-space: pre-wrap;
+  padding: 16px;
+  background-color: white;
+}
+
+output {
+  padding: 16px;
+  font-family: monospace;
+  background-color: #102b1c;
+  color: #00e444;
+}
+
+output > div {
+  position: relative;
+}
+
+output > div::before {
+  content: '>  ';
+}
+
+output[show-time] > div::after {
+  position:absolute;
+  right: 0;
+  content: attr(time) ' ms';
+}

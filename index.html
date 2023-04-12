@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executing JS</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div class="controls">
+    <select>
+      <option></option>
+    </select>
+    <div class="button" id="clear">Clear</div>
+    <div class="button" id="run">Run</div>
+    <div class="button" id="step">Step</div>
+    <div class="button" id="all">Show All</div>
+    <div class="divider"></div>
+    <label>
+      Show Time
+      <input type="checkbox" id="time"/>
+    </label>
+  </div>
+  <div class="content">
+    <code contenteditable></code>
+    <output></output>
+  </div>
+  <div class="view"></div>
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
