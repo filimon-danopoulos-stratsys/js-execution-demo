@@ -62,3 +62,9 @@ output[show-time] > div::after {
   right: 0;
   content: attr(time) ' ms';
 }
+
+.view {
+  margin: 16px;
+  border: solid 1px gray;
+  padding: 16px;
+}

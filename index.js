@@ -10,7 +10,6 @@ const $output = document.querySelector('output')
 const $view = document.querySelector('.view')
 const $time = document.querySelector('#time')
 
-const originalLog = console.log 
 const steps = []
 console.log = (message, ...rest) => {
   const now = performance.now()
@@ -20,7 +19,6 @@ console.log = (message, ...rest) => {
     $text.setAttribute('time', (now - start).toFixed(1))
     $output.appendChild($text)
   })
-  originalLog(message, ...rest)
 }
 
 
@@ -28,6 +26,7 @@ for (const example of examples) {
   const $option = document.createElement('option')
   $option.value = example.code
   $option.textContent = example.name
+  $option.dataset['view'] = example.view
   $select.appendChild($option)
 }
 
@@ -43,7 +42,7 @@ const run = async (code) => {
 
 const clearOutput = () => {
   if (shouldClearOutput) {
-    $output.innerText = ''
+    $output.innerHTML = ''
     shouldClearOutput = false
   }
 }
@@ -51,12 +50,18 @@ const clearOutput = () => {
 $select.addEventListener('change', () => {
   const code = $select.value.trim()
   selectedCode = code
-  $output.innerText = ''
+  $output.innerHTML = ''
   $code.innerText = code
+  $view.hidden = $select.selectedOptions[0]?.dataset['view'] !== 'true'
+})
+
+$code.addEventListener('input', () => {
+  selectedCode = $code.innerText
 })
 
 $clear.addEventListener('click', () => {
-  $output.innerText = ''
+  $output.innerHTML = ''
+  $view.innerHTML = ''
 })
 
 $run.addEventListener('click', () => {
