@@ -58,23 +58,23 @@ console.log('Done!')
   name: 'Tasks & Microtasks',
   view: false,
   code: `
-  console.log('Starting...')
-  
-  setTimeout(() => {
-    console.log('Task 1')
-    setTimeout(() => {
-      console.log('Task 2')
-    })
-  })
-  
-  queueMicrotask(() => {
-    console.log('Microtask 1')
-    queueMicrotask(() => {
-      console.log('Microtask 2')
-    })
-  })
+console.log('Starting...')
 
-  console.log('Done!')
+setTimeout(() => {
+  console.log('Task 1')
+  setTimeout(() => {
+    console.log('Task 2')
+  })
+})
+
+queueMicrotask(() => {
+  console.log('Microtask 1')
+  queueMicrotask(() => {
+    console.log('Microtask 2')
+  })
+})
+
+console.log('Done!')
   `
 }, {
   name: 'Recursive Timers', 
@@ -283,11 +283,11 @@ queueMicrotask(() => console.log('Microtask 1'))
 setTimeout(() => console.log('Task 1'))
 
 $container.addEventListener('click', () => {
-  console.log('Click Bubbled!')
+  console.log('Child Clicked!')
 
   setTimeout(() => console.log('Task 3'))
   queueMicrotask(() => console.log('Microtask 3'))
-})
+}, true)
 
 $button.addEventListener('click', () => {
     console.log('Button Clicked!')
@@ -313,11 +313,11 @@ queueMicrotask(() => console.log('Microtask 1'))
 setTimeout(() => console.log('Task 1'))
 
 $container.addEventListener('click', () => {
-  console.log('Click Bubbled!')
+  console.log('Child Clicked!')
 
   setTimeout(() => console.log('Task 3'))
   queueMicrotask(() => console.log('Microtask 3'))
-})
+}, true)
 
 $button.addEventListener('click', () => {
     console.log('Button Clicked!')
