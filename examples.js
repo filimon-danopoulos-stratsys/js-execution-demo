@@ -200,6 +200,42 @@ while(Date.now() - start < 20);
 console.log('Done!')
 `
 }, {
+  name: 'Idle Callbacks',
+  view: false,
+  code: `
+console.log('Starting...')
+
+setTimeout(() => {
+  console.log('Task 1')
+
+  requestIdleCallback(() => {
+    console.log('Idle 1')
+  })
+})
+
+requestIdleCallback(() => {
+  console.log('Idle 2')
+}, { timeout: 1 })
+
+setTimeout(() => {
+  console.log('Task 2')
+
+  requestIdleCallback(() => {
+    console.log('Idle 3')
+  })
+}, 10)
+
+
+requestAnimationFrame(() => {
+  console.log('Animation Frame 1')
+})
+
+const start = performance.now()
+while(performance.now() - start < 5);
+
+console.log('Done!')
+`
+}, {
   name: 'Mutation Observers',
   view: false,
   code: `
