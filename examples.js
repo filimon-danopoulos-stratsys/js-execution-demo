@@ -236,6 +236,29 @@ while(performance.now() - start < 5);
 console.log('Done!')
 `
 }, {
+  name: 'Idle Callbacks & Animation Frames',
+  view: false,
+  code: `
+const loop = (count) => {
+  if (count > 10) {
+    return
+  }
+  
+  console.log(\`Animation Frame \${count}\`)
+  requestIdleCallback((deadline) => {
+    const timeLeft = deadline.timeRemaining()
+    console.log(\`Idle Callback \${count}\: \${timeLeft}ms\`)
+  })
+
+  requestAnimationFrame(() => loop(count + 1))
+  
+  const start = performance.now()
+  while(performance.now() - start < 10);
+}
+
+requestAnimationFrame(() => loop(1))
+`
+},  {
   name: 'Mutation Observers',
   view: false,
   code: `
